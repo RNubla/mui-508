@@ -5,14 +5,6 @@ import { UserRegisterFromData, UserRegisterSchema } from "./types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "./components/Form";
 function App() {
-	// const firstName = useBoundRegisterFormStore((state) => state.firstName);
-	// const updateFirstName = useBoundRegisterFormStore(
-	// 	(state) => state.updateFirstName,
-	// );
-	// useEffect(() => {
-	// 	console.log("App");
-	// });
-
 	const {
 		handleSubmit,
 		control,
@@ -24,6 +16,7 @@ function App() {
 		defaultValues: {
 			firstName: "",
 			lastName: "",
+			email: "",
 		},
 		mode: "onChange",
 	});
@@ -47,8 +40,15 @@ function App() {
 				errors={errors.lastName?.message}
 				control={control}
 			/>
+			<Form.InputField
+				helperText="Enter Email"
+				name="email"
+				label="Email"
+				errors={errors.email?.message}
+				control={control}
+			/>
 
-			<Button variant="contained" onClick={reset}>
+			<Button variant="contained" onClick={() => reset()}>
 				Reset
 			</Button>
 			<Button variant="contained" type="submit">

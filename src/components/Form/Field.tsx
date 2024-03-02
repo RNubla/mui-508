@@ -13,7 +13,6 @@ export const InputField: React.FC<InputFieldProps> = ({
 		<Controller
 			name={name}
 			control={control}
-			rules={{ required: "First Name is required" }}
 			render={({ field }) => (
 				<TextField
 					inputRef={field.ref}
