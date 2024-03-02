@@ -48,6 +48,8 @@ function App() {
 				control={control}
 			/>
 
+			<Form.Select />
+
 			<Button variant="contained" onClick={() => reset()}>
 				Reset
 			</Button>
