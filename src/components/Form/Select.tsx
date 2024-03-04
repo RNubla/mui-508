@@ -7,17 +7,38 @@ export const Select: React.FC<SelectFieldProps> = ({
 	name,
 	label,
 	options,
+	errors,
+	optionsKey,
 }) => {
 	return (
 		<Controller
 			name={name}
 			control={control}
-			render={({ field }) => {
+			render={({ field }) => (
 				<Autocomplete
+					ref={field.ref}
+					onChange={(_event, item) => field.onChange(item)}
+					value={field.value}
 					options={options}
-					renderInput={(params) => <TextField {...params} label={label} />}
-				/>;
-			}}
+					// getOptionLabel={(option) => option[optionsKey]}
+					getOptionLabel={(item) => (item[optionsKey] ? item[optionsKey] : "")}
+					isOptionEqualToValue={(option, value) => {
+						return (
+							value === undefined ||
+							value === "" ||
+							option[optionsKey] === value[optionsKey]
+						);
+					}}
+					renderInput={(params) => (
+						<TextField
+							{...params}
+							label={label}
+							helperText={errors}
+							error={!!errors}
+						/>
+					)}
+				/>
+			)}
 		/>
 	);
 };

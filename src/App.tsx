@@ -4,6 +4,17 @@ import { useForm, Controller } from "react-hook-form";
 import { UserRegisterFromData, UserRegisterSchema } from "./types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "./components/Form";
+import { z } from "zod";
+import { ArraySchema } from "./components/Form/types";
+
+// Define the schema for a movie object
+const MovieSchema = z.object({
+	label: z.string(),
+	year: z.number(),
+});
+
+const MoviesArraySchema: ArraySchema<typeof MovieSchema> = z.array(MovieSchema);
+
 function App() {
 	const {
 		handleSubmit,
@@ -17,6 +28,7 @@ function App() {
 			firstName: "",
 			lastName: "",
 			email: "",
+			movies: "",
 		},
 		mode: "onChange",
 	});
@@ -24,8 +36,12 @@ function App() {
 	const onSubmit = (data: UserRegisterFromData) => {
 		console.log(data);
 	};
+	const movies = [
+		{ label: "The Shawshank Redemption", year: 1994 },
+		{ label: "The Godfather", year: 1972 },
+	];
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
+		<form onSubmit={handleSubmit((formData) => onSubmit(formData))}>
 			<Form.InputField
 				helperText="Enter First Name"
 				control={control}
@@ -48,7 +64,15 @@ function App() {
 				control={control}
 			/>
 
-			<Form.Select />
+			<Form.Select
+				schema={MoviesArraySchema}
+				control={control}
+				name="movies"
+				label="Select a value"
+				options={movies}
+				errors={errors.movies?.message}
+				optionsKey="label"
+			/>
 
 			<Button variant="contained" onClick={() => reset()}>
 				Reset

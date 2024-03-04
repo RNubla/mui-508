@@ -27,11 +27,16 @@ const SelectFieldSchema = z.object({
 })
 type SelectField = z.infer<typeof SelectFieldSchema>
 
-interface SelectFieldProps extends SelectField, ControllerBase, AutocompleteProps 
+interface SelectFieldProps extends SelectField, ControllerBase, AutocompleteProps {
+    schema: ArraySchema<any>
+    options: any[]
+    optionsKey: string
+}
 
 
 
 export type {
     InputFieldProps,
-    SelectFieldProps
+    SelectFieldProps,
+    ArraySchema
 }
