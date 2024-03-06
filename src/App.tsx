@@ -1,6 +1,6 @@
-import { Button, TextField } from "@mui/material";
+import { Button } from "@mui/material";
 // import { useEffect } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { UserRegisterFromData, UserRegisterSchema } from "./types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "./components/Form";
@@ -48,7 +48,7 @@ function App() {
 				control={control}
 			/>
 
-			<Form.Select />
+			{/* <Form.Select /> */}
 
 			<Button variant="contained" onClick={() => reset()}>
 				Reset
@@ -59,3 +59,5 @@ function App() {
 		</form>
 	);
 }
+
+export default App;
