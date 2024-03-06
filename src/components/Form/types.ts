@@ -31,7 +31,7 @@ interface SelectFieldProps extends SelectField, ControllerBase, AutocompleteProp
 
 
 
-export type {
+	export type {
     InputFieldProps,
-    SelectFieldProps
-}
+    SelectFieldProps, ArraySchema
+};

@@ -13,10 +13,14 @@ export const Select: React.FC<SelectFieldProps> = ({
 			name={name}
 			control={control}
 			render={({ field }) => {
-				<Autocomplete
-					options={options}
-					renderInput={(params) => <TextField {...params} label={label} />}
-				/>;
+				return (
+					<Autocomplete
+						size="small"
+						ref={field.ref}
+						options={options}
+						renderInput={(params) => <TextField {...params} label={label} />}
+					/>
+				);
 			}}
 		/>
 	);
