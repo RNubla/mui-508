@@ -1,27 +1,61 @@
-import React, { StrictMode } from "react";
-import ReactDOM from "react-dom/client";
-import { RouterProvider, createRouter } from "@tanstack/react-router";
+import { Button, TextField } from "@mui/material";
+// import { useEffect } from "react";
+import { useForm, Controller } from "react-hook-form";
+import { UserRegisterFromData, UserRegisterSchema } from "./types";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Form } from "./components/Form";
+function App() {
+	const {
+		handleSubmit,
+		control,
+		watch,
+		reset,
+		formState: { errors },
+	} = useForm<UserRegisterFromData>({
+		resolver: zodResolver(UserRegisterSchema),
+		defaultValues: {
+			firstName: "",
+			lastName: "",
+			email: "",
+		},
+		mode: "onChange",
+	});
 
-// Import the generated route tree
-import { routeTree } from "./routeTree.gen";
+	const onSubmit = (data: UserRegisterFromData) => {
+		console.log(data);
+	};
+	return (
+		<form onSubmit={handleSubmit(onSubmit)}>
+			<Form.InputField
+				helperText="Enter First Name"
+				control={control}
+				name="firstName"
+				label="First Name"
+				errors={errors.firstName?.message}
+			/>
+			<Form.InputField
+				helperText="Enter Last Name"
+				name="lastName"
+				label="Last Name"
+				errors={errors.lastName?.message}
+				control={control}
+			/>
+			<Form.InputField
+				helperText="Enter Email"
+				name="email"
+				label="Email"
+				errors={errors.email?.message}
+				control={control}
+			/>
 
-// Create a new router instance
-const router = createRouter({ routeTree });
+			<Form.Select />
 
-// Register the router instance for type safety
-declare module "@tanstack/react-router" {
-	interface Register {
-		router: typeof router;
-	}
-}
-
-// Render the app
-const rootElement = document.getElementById("app")!;
-if (!rootElement.innerHTML) {
-	const root = ReactDOM.createRoot(rootElement);
-	root.render(
-		<StrictMode>
-			<RouterProvider router={router} />
-		</StrictMode>,
+			<Button variant="contained" onClick={() => reset()}>
+				Reset
+			</Button>
+			<Button variant="contained" type="submit">
+				Submit
+			</Button>
+		</form>
 	);
 }
