@@ -17,7 +17,7 @@ interface NavBarProps {
 
 export const NavBar: React.FC<NavBarProps> = ({ children }) => {
 	return (
-		<Box sx={{ flexGrow: 1 }}>
+		<Box sx={{ flexGrow: 1, paddingBottom: 3 }}>
 			<AppBar position="static">
 				<Toolbar>
 					<IconButton
@@ -32,15 +32,13 @@ export const NavBar: React.FC<NavBarProps> = ({ children }) => {
 					<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
 						Brand Name
 					</Typography>
-					<Button color="inherit">Notification</Button>
-					<Button color="inherit">Login</Button>
-					<Button color="inherit">Theme</Button>
+					<Box component="ul" sx={{ display: { xs: "none", md: "flex" } }}>
+						<Button color="inherit">Notification</Button>
+						<Button color="inherit">Login</Button>
+						<Button color="inherit">Theme</Button>
+					</Box>
 				</Toolbar>
 			</AppBar>
-
-			<Box component={"main"} sx={{ p: 3 }}>
-				{children}
-			</Box>
 		</Box>
 	);
 };
