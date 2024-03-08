@@ -10,6 +10,7 @@ import {
 	Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { MenuItems } from "./MenuItems";
 
 interface NavBarProps {
 	children?: React.ReactNode;
@@ -34,7 +35,7 @@ export const NavBar: React.FC<NavBarProps> = ({ children }) => {
 					</Typography>
 					<Box component="ul" sx={{ display: { xs: "none", md: "flex" } }}>
 						<Button color="inherit">Notification</Button>
-						<Button color="inherit">Login</Button>
+						<MenuItems label="Hello" type="label" id="test" color="inherit" />
 						<Button color="inherit">Theme</Button>
 					</Box>
 				</Toolbar>
