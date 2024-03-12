@@ -50,19 +50,17 @@ const Home: React.FC<SearchPrams> = ({ searchParams }) => {
 						<Search />
 					</FormControl>
 				</Grid>
-				<Suspense key={query} fallback={<Skeleton />}>
-					<CardFilters query={query} cardList={cardsList} />
-					{/* {cardsList.map((card) => (
-						<Grid key={card.id} xs={12} md={6} lg={4}>
-							<BasicCard
-								title={card.title}
-								subtitle={card.subtitle}
-								link={card.link}
-								tags={card.tags}
-							/>
-						</Grid>
-					))} */}
-				</Suspense>
+				<CardFilters query={query} cardList={cardsList} />
+				{/* {cardsList.map((card) => (
+					<Grid key={card.id} xs={12} md={6} lg={4}>
+						<BasicCard
+							title={card.title}
+							subtitle={card.subtitle}
+							link={card.link}
+							tags={card.tags}
+						/>
+					</Grid>
+				))} */}
 			</Grid>
 		</main>
 	);

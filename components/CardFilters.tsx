@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2";
 import { BasicCard } from "./BasicCard";
 import { CardType } from "@/utils/types";
 
