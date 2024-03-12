@@ -34,7 +34,11 @@ export const NavBar: React.FC<NavBarProps> = ({ children }) => {
 						<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
 							Brand Name
 						</Typography>
-						<Box component="ul" sx={{ display: { xs: "none", md: "flex" } }}>
+						<Box
+							aria-label="Menus"
+							component="ul"
+							sx={{ display: { xs: "none", md: "flex" } }}
+						>
 							<Button color="inherit">Notification</Button>
 							<MenuItems label="Hello" type="label" id="test" color="inherit" />
 							<Button color="inherit">Theme</Button>
