@@ -1,13 +1,10 @@
 "use client";
-import Image from "next/image";
 import styles from "./page.module.css";
-import { BasicCard } from "@/components/BasicCard";
 import Grid from "@mui/material/Unstable_Grid2";
 import HeroCenter from "@/components/Hero";
 import CategoryTab from "@/components/CategoryTab";
 import Search from "@/components/Search";
-import { FormControl, Skeleton } from "@mui/material";
-import { Suspense } from "react";
+import { FormControl } from "@mui/material";
 import { CardFilters } from "@/components/CardFilters";
 
 interface SearchPrams {
@@ -51,16 +48,6 @@ const Home: React.FC<SearchPrams> = ({ searchParams }) => {
 					</FormControl>
 				</Grid>
 				<CardFilters query={query} cardList={cardsList} />
-				{/* {cardsList.map((card) => (
-					<Grid key={card.id} xs={12} md={6} lg={4}>
-						<BasicCard
-							title={card.title}
-							subtitle={card.subtitle}
-							link={card.link}
-							tags={card.tags}
-						/>
-					</Grid>
-				))} */}
 			</Grid>
 		</main>
 	);
