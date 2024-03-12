@@ -1,5 +1,4 @@
-"use client";
-import { Autocomplete, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import React from "react";
 
@@ -9,7 +8,7 @@ export default function Search() {
 	const { replace } = useRouter();
 
 	const handleSearch = (search: string) => {
-		console.log(`search ${search}`);
+		// console.log(`search ${search}`);
 		const params = new URLSearchParams(searchParams);
 		if (search) {
 			params.set("query", search);
