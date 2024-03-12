@@ -5,30 +5,28 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Link from "next/link";
+import { CardType } from "@/utils/types";
 
-export default function BasicCard() {
+export const BasicCard: React.FC<CardType> = ({
+	title,
+	subtitle,
+	link,
+	tags,
+}) => {
 	return (
 		<Card sx={{ minWidth: 275 }}>
 			<CardContent>
-				<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-					Word of the Day
-				</Typography>
 				<Typography variant="h5" component="div">
-					{/* be{bull}nev{bull}o{bull}lent */}
-					Hello
+					{title}
 				</Typography>
-				<Typography sx={{ mb: 1.5 }} color="text.secondary">
-					adjective
-				</Typography>
-				<Typography variant="body2">
-					well meaning and kindly.
-					<br />
-					{'"a benevolent smile"'}
-				</Typography>
+				<Typography variant="body2">{subtitle}</Typography>
 			</CardContent>
 			<CardActions>
-				<Button size="small">Learn More</Button>
+				<Link href={link}>
+					<Button size="small">Learn More</Button>
+				</Link>
 			</CardActions>
 		</Card>
 	);
-}
+};
