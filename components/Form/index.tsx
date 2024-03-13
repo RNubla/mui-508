@@ -1,7 +1,7 @@
-import { InputField } from "./Field";
+import { InputField } from "./USField";
 import { Select } from "./Select";
 
-export const Form = {
+export const FormField = {
 	InputField,
 	Select,
 };

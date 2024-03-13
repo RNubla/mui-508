@@ -1,4 +1,5 @@
 "use client";
+import { FormField } from "@/components/Form";
 import {
 	Button,
 	ErrorMessage,
@@ -34,34 +35,12 @@ export default function NameForm() {
 	return (
 		<Form onSubmit={handleSubmit(onSubmit)}>
 			<Fieldset legend="Name" legendStyle="large">
-				<Controller
-					name="firstName"
+				<FormField.InputField
 					control={control}
-					rules={{
-						required: "First name is required",
-					}}
-					render={({ field, fieldState: { error } }) => (
-						<>
-							<Label htmlFor="first-name">First or given name</Label>
-							{error && (
-								<ErrorMessage id="input-error-message">
-									{error.message}
-								</ErrorMessage>
-							)}
-							<TextInput
-								id="first-name"
-								name="first-name"
-								type="text"
-								onChange={field.onChange}
-								validationStatus={error ? "error" : undefined}
-								value={field.value}
-								inputRef={field.ref}
-							/>
-							<span className="usa-hint">
-								For example, Jose, Darren, or Mai
-							</span>
-						</>
-					)}
+					id="firstName"
+					name="firstName"
+					rules={{ required: "First Name is required" }}
+					helperText="For example, John, Sam, or Bob"
 				/>
 				<Controller
 					name="middleName"
@@ -80,32 +59,12 @@ export default function NameForm() {
 						</>
 					)}
 				/>
-				<Controller
-					name="lastName"
+				<FormField.InputField
 					control={control}
+					name="lastName"
+					id="lastName"
 					rules={{ required: "Last name is required" }}
-					render={({ field, fieldState: { error } }) => (
-						<>
-							<Label htmlFor="last-name">Last or family name</Label>
-							{error && (
-								<ErrorMessage id="input-error-message">
-									{error.message}
-								</ErrorMessage>
-							)}
-							<TextInput
-								id="last-name"
-								name="last-name"
-								type="text"
-								inputRef={field.ref}
-								onChange={field.onChange}
-								validationStatus={error ? "error" : undefined}
-								value={field.value}
-							/>
-							<span className="usa-hint">
-								For example, Martinez Gonzalez, Gu, or Smith
-							</span>
-						</>
-					)}
+					helperText="For example, Martinez, Gu, or Smith"
 				/>
 			</Fieldset>
 			<Button type="button" onClick={() => reset()}>
