@@ -51,7 +51,6 @@ export const InputField: React.FC<InputFieldProps> = ({
 							onChange={field.onChange}
 							validationStatus={error ? "error" : undefined}
 							value={field.value}
-							required={isRequired}
 						/>
 						{helperText && <span className="usa-hint">{helperText}</span>}
 					</>
