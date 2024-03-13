@@ -1,4 +1,9 @@
-import { ErrorMessage, Label, TextInput } from "@trussworks/react-uswds";
+import {
+	ErrorMessage,
+	FormGroup,
+	Label,
+	TextInput,
+} from "@trussworks/react-uswds";
 import {
 	type Control,
 	Controller,
@@ -29,7 +34,7 @@ export const InputField: React.FC<InputFieldProps> = ({
 			render={({ field, fieldState: { error } }) => {
 				const isRequired = rules?.required ? true : false;
 				return (
-					<>
+					<FormGroup error={error ? true : false}>
 						<Label
 							htmlFor={id}
 							requiredMarker={isRequired}
@@ -53,7 +58,7 @@ export const InputField: React.FC<InputFieldProps> = ({
 							value={field.value}
 						/>
 						{helperText && <span className="usa-hint">{helperText}</span>}
-					</>
+					</FormGroup>
 				);
 			}}
 		/>
