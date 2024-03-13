@@ -34,7 +34,7 @@ export default function NameForm() {
 		console.log(`data ${JSON.stringify(data, null, 2)}`);
 	};
 	return (
-		<Form onSubmit={handleSubmit(onSubmit)}>
+		<Form onSubmit={handleSubmit(onSubmit)} large>
 			<Fieldset legend="Name Info" legendStyle="large">
 				<p>
 					Required fields are marked with an asterisk (<RequiredMarker />
