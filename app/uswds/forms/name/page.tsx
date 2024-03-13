@@ -6,6 +6,7 @@ import {
 	Fieldset,
 	Form,
 	Label,
+	RequiredMarker,
 	TextInput,
 } from "@trussworks/react-uswds";
 import React from "react";
@@ -34,23 +35,30 @@ export default function NameForm() {
 	};
 	return (
 		<Form onSubmit={handleSubmit(onSubmit)}>
-			<Fieldset legend="Name" legendStyle="large">
+			<Fieldset legend="Name Info" legendStyle="large">
+				<p>
+					Required fields are marked with an asterisk (<RequiredMarker />
+					).
+				</p>
 				<FormField.InputField
 					control={control}
 					id="firstName"
 					name="firstName"
 					rules={{ required: "First Name is required" }}
+					label="First Name"
 					helperText="For example, John, Sam, or Bob"
 				/>
 				<FormField.InputField
 					control={control}
 					name="middleName"
 					id="middleName"
+					label="Middle Name"
 				/>
 				<FormField.InputField
 					control={control}
 					name="lastName"
 					id="lastName"
+					label="Last Name"
 					rules={{ required: "Last name is required" }}
 					helperText="For example, Martinez, Gu, or Smith"
 				/>

@@ -10,6 +10,7 @@ interface InputFieldProps extends UseControllerProps {
 	id: string;
 	name: string;
 	helperText?: string;
+	label: string;
 }
 
 export const InputField: React.FC<InputFieldProps> = ({
@@ -18,6 +19,7 @@ export const InputField: React.FC<InputFieldProps> = ({
 	rules,
 	name,
 	helperText,
+	label,
 }) => {
 	return (
 		<Controller
@@ -31,16 +33,16 @@ export const InputField: React.FC<InputFieldProps> = ({
 						<Label
 							htmlFor={id}
 							requiredMarker={isRequired ? true : undefined}
+							aria-required={isRequired ? true : false}
 							hint={isRequired === undefined ? " (optional)" : null}
 						>
-							Last or family name
+							{label}
 						</Label>
 						{error && (
 							<ErrorMessage id={`${id}-error-message`}>
 								{error.message}
 							</ErrorMessage>
 						)}
-
 						<TextInput
 							id={id}
 							name={name}
@@ -49,6 +51,7 @@ export const InputField: React.FC<InputFieldProps> = ({
 							onChange={field.onChange}
 							validationStatus={error ? "error" : undefined}
 							value={field.value}
+							required={isRequired ? true : false}
 						/>
 						{helperText && <span className="usa-hint">{helperText}</span>}
 					</>
