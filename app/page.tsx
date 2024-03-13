@@ -33,6 +33,13 @@ const Home: React.FC<SearchPrams> = ({ searchParams }) => {
 			link: "/test",
 			tags: ["test", "testing"],
 		},
+		{
+			id: 2,
+			title: "USWDS",
+			subtitle: "Learn about USWDS",
+			link: "/uswds",
+			tags: ["uswds", "508"],
+		},
 	];
 
 	return (

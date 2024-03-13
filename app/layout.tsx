@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "@uswds/uswds/css/uswds.css";
+// import "@trussworks/react-uswds/lib/uswds.css";
+// import "@trussworks/react-uswds/lib/index.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { Box, Container, ThemeProvider } from "@mui/material";
 import theme from "./theme";
