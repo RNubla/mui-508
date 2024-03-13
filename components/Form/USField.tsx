@@ -27,14 +27,14 @@ export const InputField: React.FC<InputFieldProps> = ({
 			control={control}
 			rules={rules}
 			render={({ field, fieldState: { error } }) => {
-				const isRequired = rules?.required;
+				const isRequired = rules?.required ? true : false;
 				return (
 					<>
 						<Label
 							htmlFor={id}
-							requiredMarker={isRequired ? true : undefined}
-							aria-required={isRequired ? true : false}
-							hint={isRequired === undefined ? " (optional)" : null}
+							requiredMarker={isRequired}
+							aria-required={isRequired}
+							hint={isRequired === false ? " (optional)" : null}
 						>
 							{label}
 						</Label>
@@ -51,7 +51,7 @@ export const InputField: React.FC<InputFieldProps> = ({
 							onChange={field.onChange}
 							validationStatus={error ? "error" : undefined}
 							value={field.value}
-							required={isRequired ? true : false}
+							required={isRequired}
 						/>
 						{helperText && <span className="usa-hint">{helperText}</span>}
 					</>
