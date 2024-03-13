@@ -42,22 +42,10 @@ export default function NameForm() {
 					rules={{ required: "First Name is required" }}
 					helperText="For example, John, Sam, or Bob"
 				/>
-				<Controller
-					name="middleName"
+				<FormField.InputField
 					control={control}
-					render={({ field }) => (
-						<>
-							<Label htmlFor="middle-name">Middle name</Label>
-							<TextInput
-								id="middle-name"
-								name="middle-name"
-								type="text"
-								inputRef={field.ref}
-								onChange={field.onChange}
-								value={field.value}
-							/>
-						</>
-					)}
+					name="middleName"
+					id="middleName"
 				/>
 				<FormField.InputField
 					control={control}
