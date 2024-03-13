@@ -63,24 +63,10 @@ export default function NameForm() {
 					helperText="For example, Martinez, Gu, or Smith"
 				/>
 			</Fieldset>
-			<Button type="button" onClick={() => reset()}>
+			<Button type="button" onClick={() => reset()} secondary>
 				Reset
 			</Button>
 			<Button type="submit">Submit</Button>
-			{/* <Fieldset legend="Full name" legendStyle="large">
-				<Label htmlFor="full-name">Full name</Label>
-				<span className="usa-hint">
-					For example, Prof. Madeline Martinez Hernandez
-				</span>
-				<TextInput id="full-name" name="full-name" type="text" />
-			</Fieldset>
-			<Fieldset legend="Preferred name" legendStyle="large">
-				<Label htmlFor="preferred-name">I prefer to be addressed as</Label>
-				<span className="usa-hint">
-					For example, Dr. Gu, Mrs. Schmidt, Alix Martinez
-				</span>
-				<TextInput id="preferred-name" name="preferred-name" type="text" />
-			</Fieldset> */}
 		</Form>
 	);
 }
