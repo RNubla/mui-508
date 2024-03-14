@@ -23,22 +23,28 @@ export const UserRegisterSchema = z.object({
 		.string()
 		.min(1, { message: "Email is required" })
 		.email({ message: "Invalid email address" }),
-	movies: z
-		.object({
-			label: z.string().optional(),
-			year: z.number().optional(),
-		})
-		.optional()
-		.transform((val, ctx) => {
-			console.log(`test ${JSON.stringify(val)}`);
-			if (!val || !val.label) {
-				ctx.addIssue({
-					code: z.ZodIssueCode.custom,
-					message: "Select a movie",
-				});
-			}
-			return val;
-		}),
+	movies: z.object(
+		{
+			label: z.string(),
+		},
+		{ required_error: "Select a movie" },
+	),
+	// movies: z
+	// 	.object({
+	// 		label: z.string().optional(),
+	// 		year: z.number().optional(),
+	// 	})
+	// 	.optional()
+	// 	.transform((val, ctx) => {
+	// 		console.log(`test ${JSON.stringify(val)}`);
+	// 		if (!val || !val.label) {
+	// 			ctx.addIssue({
+	// 				code: z.ZodIssueCode.custom,
+	// 				message: "Select a movie",
+	// 			});
+	// 		}
+	// 		return val;
+	// 	}),
 });
 
 const ActionSchema = z.object({

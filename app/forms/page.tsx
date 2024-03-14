@@ -4,7 +4,7 @@ import { Button, TextField } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import { UserRegisterFromData, UserRegisterSchema } from "@/components/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form } from "@/components/Form";
+import { FormField } from "@/components/Form";
 import { z } from "zod";
 import { ArraySchema } from "@/components/Form/types";
 
@@ -42,42 +42,41 @@ export default function FormPage() {
 	];
 	return (
 		<form onSubmit={handleSubmit((formData) => onSubmit(formData))}>
-			<Form.InputField
+			<FormField.MuiField
+				rules={{ required: true }}
 				helperText="Enter First Name"
 				control={control}
 				name="firstName"
 				label="First Name"
-				errors={errors.firstName?.message}
 			/>
-			<Form.InputField
+			<FormField.MuiField
 				helperText="Enter Last Name"
 				name="middleName"
 				label="Middle Name"
-				errors={errors.middleName?.message}
 				control={control}
 			/>
-			<Form.InputField
+			<FormField.MuiField
 				helperText="Enter Last Name"
 				name="lastName"
 				label="Last Name"
-				errors={errors.lastName?.message}
+				rules={{ required: true }}
 				control={control}
 			/>
-			<Form.InputField
+			<FormField.MuiField
 				helperText="Enter Email"
 				name="email"
 				label="Email"
-				errors={errors.email?.message}
+				rules={{ required: true }}
 				control={control}
 			/>
 
-			<Form.Select
+			<FormField.Select
 				schema={MoviesArraySchema}
 				control={control}
 				name="movies"
 				label="Select a value"
 				options={movies}
-				errors={errors.movies?.message}
+				rules={{ required: true }}
 				optionsKey="label"
 			/>
 
