@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { Control } from "react-hook-form";
+import { Control, InputValidationRules } from "react-hook-form";
 import { AutocompleteProps, TextFieldProps } from '@mui/material';
 
 interface ControllerBase {
@@ -35,7 +35,10 @@ const KeyValuePairSchema = z.object({
 type KeyValuePair<K extends string, V> = z.infer<typeof KeyValuePairSchema>
 
 interface SelectFieldProps extends SelectField, ControllerBase {
-    options: KeyValuePair<string, unknown>[]
+    options: Record<string, string>[]
+    optionsKey: string
+    helperText?: string
+    rules: any
 }
 
 

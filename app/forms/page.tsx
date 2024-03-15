@@ -37,8 +37,8 @@ export default function FormPage() {
 		console.log(data);
 	};
 	const movies = [
-		{ label: "The Shawshank Redemption", year: 1994 },
-		{ label: "The Godfather", year: 1972 },
+		{ id: 0, label: "The Shawshank Redemption", year: 1994 },
+		{ id: 1, label: "The Godfather", year: 1972 },
 	];
 	return (
 		<form onSubmit={handleSubmit((formData) => onSubmit(formData))}>
@@ -77,7 +77,6 @@ export default function FormPage() {
 				label="Select a value"
 				options={movies}
 				rules={{ required: true }}
-				optionsKey="label"
 			/>
 
 			<Button variant="contained" onClick={() => reset()}>

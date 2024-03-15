@@ -23,18 +23,17 @@ export const UserRegisterSchema = z.object({
 		.string()
 		.min(1, { message: "Email is required" })
 		.email({ message: "Invalid email address" }),
-	movies: z.object(
-		{
-			label: z.string(),
-		},
-		{ required_error: "Select a movie" },
-	),
-	// movies: z
-	// 	.object({
-	// 		label: z.string().optional(),
-	// 		year: z.number().optional(),
-	// 	})
-	// 	.optional()
+	// movies: z.string().min(1, { message: "Select one" }),
+	movies: z
+		.object({
+			id: z.number(),
+			label: z.string().optional(),
+			year: z.number().optional(),
+		})
+		.refine((data) => data.label || data.year, {
+			message: "Please select a movie",
+		}),
+	// .optional()
 	// 	.transform((val, ctx) => {
 	// 		console.log(`test ${JSON.stringify(val)}`);
 	// 		if (!val || !val.label) {
