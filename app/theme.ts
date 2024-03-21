@@ -10,6 +10,15 @@ const roboto = Roboto({
 });
 
 const theme = createTheme({
+    components: {
+        MuiAppBar: {
+            styleOverrides: {
+                root: {
+                    boxShadow: 'none'
+                }
+            }
+        }
+    },
     typography: {
         fontFamily: roboto.style.fontFamily,
     },
